@@ -2,10 +2,15 @@ import socket
 import pickle
 
 HEADERSIZE = 10
+HEADER = 64
+PORT = 5050
+FORMAT = 'utf-8'
+DISCONNECT_MESSAGE = "!DISCONNECT"
+SERVER = "192.168.1.26"
+ADDR = (SERVER, PORT)
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect((socket.gethostname(), 1234))
-
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(ADDR)
 
 while True:
     full_msg = b''
