@@ -21,7 +21,6 @@ while True:
             print(f'new message length: {msg[:HEADERSIZE]}')
             msglen = int(msg[:HEADERSIZE])
             new_msg = False
-
         full_msg += msg
 
         if len(full_msg) - HEADERSIZE == msglen:
@@ -30,7 +29,6 @@ while True:
 
             bfolder = pickle.loads(full_msg[HEADERSIZE:])
             print(bfolder)
-
 
             new_msg = True
             full_msg = b''
