@@ -33,6 +33,10 @@ while True:
 
 
             new_msg = True
-            full_msg = ''
+            full_msg = b''
+
+            file = open('res.txt', 'w')
+            file.write(full_msg)
+            file.close()
 
     print(full_msg)
