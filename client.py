@@ -1,7 +1,7 @@
 import socket
 import pickle
 
-
+HEADERSIZE = 10
 PORT = 9090
 FORMAT = 'utf-8'
 DISCONNECT_MESSAGE = "!DISCONNECT"
@@ -32,7 +32,7 @@ def main():
                 full_msg = b''
 
                 file = open('res.txt', 'w')
-                file.write(full_msg)
+                file.write(str(full_msg))
                 file.close()
 
         print(full_msg)

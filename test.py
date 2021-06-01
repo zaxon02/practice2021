@@ -3,7 +3,7 @@ import pickle
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import datetime
 
-CLIENTS = {'user1': '111.000.0.000', 'user2': '111.111.0.111'}
+CLIENTS = {'user1': '111.111.0.111', 'user2': '222.222.0.222'}
 
 HEADERSIZE = 10
 PORT = 9090
@@ -37,15 +37,15 @@ class requestHandler(BaseHTTPRequestHandler):
             x = s.sendto(msg, (CLIENTS['user1'], PORT))
             s.close()
 
-        #if self.path.endswith('/time'):
-           # output = ''
-           # output += '<html><body>'
-           # output = str(datetime.datetime.now().time())
-           # output += '</body></html>'
-           # self.wfile.write(output.encode())
-           # response = open('request.txt', 'w')
-           # response.write(output)
-            #response.close()
+        if self.path.endswith('/time'):
+           output = ''
+           output += '<html><body>'
+           output = str(datetime.datetime.now().time())
+           output += '</body></html>'
+           self.wfile.write(output.encode())
+           response = open('request.txt', 'w')
+           response.write(output)
+           response.close()
 
         if self.path.endswith('/date'):
             output = ''
@@ -59,9 +59,9 @@ class requestHandler(BaseHTTPRequestHandler):
 
 
 def main():
-    PORT = 8000
-    server = HTTPServer(('', PORT), requestHandler)
-    print('Server running on port %s' % PORT)
+    port_http = 8000
+    server = HTTPServer(('', port_http), requestHandler)
+    print('Server running on port %s' % port_http)
     server.serve_forever()
 
 if __name__ == "__main__":
